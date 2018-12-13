@@ -1,0 +1,43 @@
+{
+  "name": "a2hs",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "private": false,
+  "scripts": {
+    "lint": "eslint --ext .js,.json src --fix",
+    "es5": "npx babel --no-babelrc src --out-dir lib",
+    "build": "npx webpack --config webpack.config.js",
+    "commit": "npx git-cz",
+    "flow": "flow"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verify-commit-msg.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "author": "+v",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-syntax-jsx": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.10.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "flow-bin": "^0.88.0",
+    "flow-remove-types": "^1.2.3",
+    "remove-flow-types-loader": "^1.1.0",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
+}
